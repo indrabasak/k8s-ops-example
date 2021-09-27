@@ -1,0 +1,20 @@
+#!groovy
+
+@Library('ops-pipeline-lib@main') _
+k8sPipeline([
+    release_version:  '1.0.0',
+    output_container: 'docker-registry/example-app',
+
+    dv_context:       ['dvint'],
+    dv_namespace:     ['ns-1', 'ns-2'],
+
+    qa_context:       ['qaint'],
+    qa_namespace:     ['ns-1'],
+
+    pr_context:       ['print'],
+    pr_namespace:     ['ns-1'],
+
+    build_cmd:        'true',
+    deployment_name:  'example-app'
+
+])
